@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(213, 110, 224);
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    margin: 100px auto;
+}
+
+.box {
+    border: 1px dotted #fbf8f8;
+    margin: 10px;
+    width: 200px;
+    height: 400px;
+}
+
+.list {
+    border: 1px dotted #fcfbfb;
+    margin: 5px;
+    padding: 5px;
+    height: 50px;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+.empty-box {
+    border: 1px solid #000;
+    margin: 10px;
+    width: 200px;
+    height: 400px;
+  
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class='container'>
+        <div class="box">
+            <div class="list" draggable="true" >1</div>
+            <div class="list" draggable="true" >2</div>
+            <div class="list" draggable="true" >3</div>
+            <div class="list" draggable="true" >4</div>
+        </div>
+        <div class="empty-box"></div>
+    </div>
+
+    <script>
+        let leftBox = document.querySelector('.box');
+        let rightBox = document.querySelector('.empty-box');
+        let items = document.querySelectorAll('.list');
+       
+        
+        for(let item of items){
+           item.addEventListener('drag',(e)=>{
+            let selected = e.target;
+
+             rightBox.addEventListener('dragover',(e)=>{
+                e.preventDefault();
+             });
+
+             rightBox.addEventListener('drop',(e)=>{
+                
+                rightBox.appendChild(selected);
+                selected=null;
+             });
+             
+             leftBox.addEventListener('dragover',(e)=>{
+                e.preventDefault();
+             });
+
+             leftBox.addEventListener('drop',(e)=>{
+                leftBox.appendChild(selected);
+                selected=null;
+             });
+           })
+        }
+        
+    
+
+
+
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Box</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .draggable-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="draggable-box" id="box"></div>
+
+<script>
+    const box = document.getElementById('box');
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    box.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - box.getBoundingClientRect().left;
+        offsetY = e.clientY - box.getBoundingClientRect().top;
+        box.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const x = e.clientX - offsetX;
+        const y = e.clientY - offsetY;
+
+        box.style.left = `${x}px`;
+        box.style.top = `${y}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        box.style.cursor = 'grab';
+    });
+</script>
+
+</body>
+</html> -->
